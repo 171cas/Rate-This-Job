@@ -16,6 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;
+  window.store.dispatch(window.sessionActions.restoreUser());
 }
 
 //window.store.dispatch({ type: 'hello' });

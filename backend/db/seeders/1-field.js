@@ -22,6 +22,6 @@ module.exports = {
 
       Example:
       */
-    return queryInterface.bulkDelete('Field', null, {});
+    return queryInterface.bulkDelete('Fields', null, {});
   }
 };

@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Field.associate = function (models) {
     // associations can be defined here
+    Field.hasMany(models.Review, { foreignKey: 'fieldId' });
   };
   return Field;
 };

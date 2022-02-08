@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [5, 5], // something similar that might work?
-        min: 00000,
+        min: 0,
         max: 99999
       }
     },

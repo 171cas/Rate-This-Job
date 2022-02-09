@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, Route, useParams } from 'react-router-dom';
+import BusinessDetail from '../BusinessDetail';
 import { getBusiness } from '../../store/business';
 
 const BusinessBrowser = () => {
     const dispatch = useDispatch();
-    //const { businessId } = useParams();
+
+    const { businessId } = useParams();
     const businesses = useSelector(state => {
         return state.business.list
     });
@@ -21,11 +22,14 @@ const BusinessBrowser = () => {
 
     return (
         <nav>
+            <Route path="/business/:businessId">
+                <BusinessDetail />
+            </Route>
             {businesses.map((business) => {
                 return (
                     <NavLink key={business.title} to={`/business/${business.id}`}>
                         <div>
-                            <div className="primary-text">{business.title}</div>
+                            <div>{business.title}</div>
                         </div>
                     </NavLink>
                 );

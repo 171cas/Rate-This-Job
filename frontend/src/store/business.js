@@ -9,11 +9,6 @@ const load = (list) => (
 
 export const getOneBusiness = (id) => async (dispatch) => {
     const response = await fetch(`/api/business/${id}`);
-
-    if (response.ok) {
-        const business = await response.json();
-        dispatch(getOneBusiness(business));
-    }
 };
 
 export const getBusiness = () => async (dispatch) => {

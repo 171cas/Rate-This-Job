@@ -13,7 +13,12 @@ async function list() {
 }
 // Restore session user
 router.get('/', asyncHandler(async function (_req, res) {
-    const business = await list();
+    const businesses = await list();
+    return res.json(businesses);
+}));
+
+router.get('/:id', asyncHandler(async function (req, res) {
+    const business = await Business.findByPk(+req.params.id);
     return res.json(business);
 }));
 

@@ -25,7 +25,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path={["/", "/business", "/business/:businessId"]}>
+          <Route exact path={["/business", "/business/:businessId"]}>
             <BusinessBrowser />
           </Route>
         </Switch>

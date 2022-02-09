@@ -1,8 +1,5 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
-import BusinessDetail from '../BusinessDetail';
-import { getBusiness } from '../../store/business';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 const HomePage = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -26,7 +23,7 @@ const HomePage = () => {
         <nav>
             <h1>Review a Job</h1>
             <h1>Read Reviews of a Job</h1>
-            <h1>Create a Job</h1>
+            <NavLink to="/createBusiness"><h1>Create a Job</h1></NavLink>
             {sessionLinks && sessionLinks}
         </nav>
     );

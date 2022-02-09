@@ -1,9 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { User } = require('../../db/models');
 const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
 const { Business } = require('../../db/models')
 
 const router = express.Router();
@@ -16,6 +14,78 @@ router.get('/', asyncHandler(async function (_req, res) {
     const businesses = await list();
     return res.json(businesses);
 }));
+
+const validateBusiness = [
+    check('title')
+        .notEmpty()
+        .isLength({ max: 30 })
+        .withMessage('Please provide a valid title.'),
+    check('description')
+        .isLength({ max: 500, min: 10 })
+        .withMessage('Please provide a valid description.'),
+    check('address')
+        .notEmpty()
+        .isLength({ max: 100, min: 5 })
+        .withMessage('Please provide a valid address.'),
+    check('city')
+        .notEmpty()
+        .isLength({ max: 25, min: 3 })
+        .withMessage('Please provide a valid city.'),
+    check('state')
+        .notEmpty()
+        .isLength({ max: 2, min: 2 })
+        .withMessage('Please provide a valid state.'),
+    check('zipcode')
+        .notEmpty()
+        .isInt({ min: 0, max: 99999 })
+        .toInt()
+        .withMessage('Please provide a valid zipcode.'),
+]
+
+router.post(
+    '/',
+    restoreUser,
+    validateBusiness,
+    asyncHandler(async function (req, res) {
+
+        const { user } = req;
+        // const userId = req.session.user.id
+        const {
+            title,
+            description,
+            address,
+            city,
+            state,
+            zipcode
+        } = req.body;
+
+        const business = await Business.create(
+            {
+                userId: user.id,
+                title,
+                description,
+                address,
+                city,
+                state,
+                zipcode
+            }
+        )
+
+        console.log(business.dataValues)
+        if (!business) {
+            const err = new Error('Create failed');
+            err.status = 401;
+            err.title = 'Create failed';
+            err.errors = ['The provided credentials were invalid.'];
+            return next(err);
+        }
+
+        return res.json({
+            user
+        });
+
+    })
+);
 
 router.get('/:id', asyncHandler(async function (req, res) {
     const business = await Business.findByPk(+req.params.id);

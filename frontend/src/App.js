@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import BusinessBrowser from "./components/BusinessBrowser"
 import HomePage from "./components/HomePage";
+import CreateBusinessForm from "./components/CreateBusinessForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route exact path="/createBusiness">
+            <CreateBusinessForm />
           </Route>
           <Route path="/login">
             <LoginFormPage />

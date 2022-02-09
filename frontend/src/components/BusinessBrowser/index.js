@@ -27,7 +27,7 @@ const BusinessBrowser = () => {
             </Route>
             {businesses.map((business) => {
                 return (
-                    <NavLink key={business.title} to={`/business/${business.id}`}>
+                    <NavLink key={business.id} to={`/business/${business.id}`}>
                         <div>
                             <div>{business.title}</div>
                         </div>

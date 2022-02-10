@@ -32,7 +32,7 @@ const addOneBusiness = (business) => (
 );
 
 export const editBusiness = (business) => async (dispatch) => {
-    const response = await csrfFetch(`/api/events/${business.id}`, {
+    const response = await csrfFetch(`/api/business/${business.id}`, {
         method: 'PUT',
         body: JSON.stringify(business)
     })

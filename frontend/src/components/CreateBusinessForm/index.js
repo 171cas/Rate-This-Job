@@ -35,8 +35,8 @@ const CreateBusinessForm = ({ hideForm }) => {
         }
         let createdBusiness = await dispatch(createBusiness(payload));
         if (createdBusiness) {
-            console.log(createdBusiness)
-            history.push(`/business/${createdBusiness.id}`);
+            //console.log(createdBusiness.business)
+            history.push(`/business/${createdBusiness.business.id}`);
             //hideForm();
         }
     };

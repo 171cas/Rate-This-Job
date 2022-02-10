@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage";
 import CreateBusinessForm from "./components/CreateBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
 import ReviewBrowser from "./components/ReviewBrowser";
+import ReviewDetail from "./components/ReviewDetail"
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route exact path={["/review/business/:businessId"]}>
             <ReviewBrowser />
+          </Route>
+          <Route exact path={["/review/:reviewId"]}>
+            <ReviewDetail />
           </Route>
         </Switch>
       )}

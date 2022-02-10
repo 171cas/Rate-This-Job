@@ -16,4 +16,20 @@ router.get('/business/:businessId', asyncHandler(async function (req, res) {
     return res.json(reviews);
 }));
 
+router.get('/:id', asyncHandler(async function (req, res) {
+    const review = await Review.findByPk(+req.params.id);
+    return res.json(review);
+}));
+
+router.delete(
+    '/:id',
+    restoreUser,
+    asyncHandler(async function (req, res) {
+        //const { user } = req;
+        const review = await Review.findByPk(+req.params.id);
+        await Review.destroy({ where: { id: review.id } })
+        return res.json(review)
+    })
+);
+
 module.exports = router;

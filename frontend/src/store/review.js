@@ -12,6 +12,12 @@ const load = (list) => (
     }
 )
 
+const remove = (reviewId) => ({
+    type: DELETE,
+    reviewId
+})
+
+
 export const getReviews = (businessId) => async (dispatch) => {
     const response = await fetch(`/api/review/business/${businessId}`);
     //console.log('response', response)
@@ -21,6 +27,24 @@ export const getReviews = (businessId) => async (dispatch) => {
         dispatch(load(list));
     }
 };
+
+export const getOneReview = (id) => async (dispatch) => {
+    const response = await fetch(`/api/review/${id}`)
+    return response
+}
+
+export const deleteReview = (reviewId) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/review/${reviewId}`, {
+        method: 'delete',
+    });
+
+    if (response.ok) {
+        const review = await response.json();
+        dispatch(remove(review.id));
+        return review;
+    }
+}
 
 const initialState = {
     list: [],
@@ -39,6 +63,13 @@ const reviewReducer = (state = initialState, action) => {
                 ...state,
                 list: action.list //sortList(action.list)
             };
+        }
+        case DELETE: {
+            const newState = { ...state };
+            delete newState[action.reviewId];
+            newState.list = newState.list.filter(
+                (review) => review.id !== action.reviewId)
+            return newState
         }
 
         default:

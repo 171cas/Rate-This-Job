@@ -2,6 +2,12 @@ import { csrfFetch } from './csrf';
 
 const LOAD = 'business/LOAD'
 const ADD_ONE = 'business/ADD_ONE';
+const DELETE = 'business/DELETE'
+
+const remove = (businessId) => ({
+    type: DELETE,
+    businessId
+})
 
 const load = (list) => (
     {
@@ -16,6 +22,23 @@ const addOneBusiness = (business) => (
         business
     }
 );
+
+export const deleteBusiness = (businessId) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/business/${businessId}`, {
+        method: 'delete',
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        // body: JSON.stringify(businessId)
+    });
+
+    if (response.ok) {
+        const business = await response.json();
+        dispatch(remove(business.id));
+        return business;
+    }
+}
 
 export const getOneBusiness = (id) => async (dispatch) => {
     const response = await fetch(`/api/business/${id}`);
@@ -44,7 +67,7 @@ export const createBusiness = (data) => async (dispatch) => {
 
     if (response.ok) {
         const business = await response.json();
-        dispatch(addOneBusiness(business));
+        dispatch(addOneBusiness(business.id));
         return business;
     }
 };
@@ -95,6 +118,14 @@ const businessReducer = (state = initialState, action) => {
                     ...action.business
                 }
             };
+        }
+
+        case DELETE: {
+            const newState = { ...state };
+            delete newState[action.businessId];
+            newState.list = newState.list.filter(
+                (business) => business.id !== action.businessId)
+            return newState
         }
 
         default:

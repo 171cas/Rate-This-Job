@@ -89,6 +89,17 @@ router.post(
     })
 );
 
+router.delete(
+    '/:id',
+    restoreUser,
+    asyncHandler(async function (req, res) {
+        //const { user } = req;
+        const business = await Business.findByPk(+req.params.id);
+        await Business.destroy({ where: { id: business.id } })
+        return res.json(business)
+    })
+);
+
 router.get('/:id', asyncHandler(async function (req, res) {
     const business = await Business.findByPk(+req.params.id);
     return res.json(business);

@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const LOAD = 'business/LOAD'
 const ADD_ONE = 'business/ADD_ONE';
 const DELETE = 'business/DELETE'
+const EDIT = 'business/EDIT';
 
 const remove = (businessId) => ({
     type: DELETE,
@@ -16,12 +17,31 @@ const load = (list) => (
     }
 )
 
+const edit = (business) => (
+    {
+        type: EDIT,
+        business
+    }
+);
+
 const addOneBusiness = (business) => (
     {
         type: ADD_ONE,
         business
     }
 );
+
+export const editBusiness = (business) => async (dispatch) => {
+    const response = await csrfFetch(`/api/events/${business.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(business)
+    })
+    if (response.ok) {
+        const editedBusiness = await response.json()
+        dispatch(edit(editedBusiness))
+        return editedBusiness
+    }
+}
 
 export const deleteBusiness = (businessId) => async (dispatch) => {
 
@@ -119,6 +139,11 @@ const businessReducer = (state = initialState, action) => {
                 }
             };
         }
+        case EDIT:
+            return {
+                ...state,
+                [action.business.id]: action.business
+            }
 
         case DELETE: {
             const newState = { ...state };

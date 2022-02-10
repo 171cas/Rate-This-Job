@@ -89,6 +89,18 @@ router.post(
     })
 );
 
+router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const business = await Business.findByPk(req.params.id);
+    business.title = req.body.title;
+    business.description = req.body.description;
+    business.address = req.body.address;
+    business.city = req.body.city;
+    business.zipcode = req.body.zipcode;
+
+    await business.save();
+    res.json(business);
+}));
+
 router.delete(
     '/:id',
     restoreUser,

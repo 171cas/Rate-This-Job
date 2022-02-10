@@ -30,11 +30,14 @@ const BusinessDetail = () => {
         return null;
     }
 
-    console.log(+businessId)
     const handleClick = async (e) => {
         e.preventDefault();
         await dispatch(deleteBusiness(+businessId))
         history.push("/business");
+    };
+    const handleClickEdit = async (e) => {
+        e.preventDefault();
+        history.push(`/edit/business/${businessId}`);
     };
 
     return (
@@ -46,6 +49,11 @@ const BusinessDetail = () => {
                 onClick={handleClick}
             >
                 Delete Business
+            </button>
+            <button
+                onClick={handleClickEdit}
+            >
+                Edit Business
             </button>
 
             {reviewLinks && reviewLinks}

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import BusinessBrowser from "./components/BusinessBrowser"
 import HomePage from "./components/HomePage";
 import CreateBusinessForm from "./components/CreateBusinessForm";
+import EditBusinessForm from "./components/EditBusinessForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path={["/business", "/business/:businessId"]}>
             <BusinessBrowser />
+          </Route>
+          <Route exact path={["/edit/business/:businessId"]}>
+            <EditBusinessForm />
           </Route>
         </Switch>
       )}

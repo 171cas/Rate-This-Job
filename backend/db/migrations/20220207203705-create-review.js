@@ -14,6 +14,7 @@ module.exports = {
       },
       businessId: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references: { model: 'Businesses' },
       },
       fieldId: {

@@ -49,7 +49,8 @@ const EditBusinessForm = ({ hideForm }) => {
                 if (data && data.errors) setErrors(data.errors);
             });
 
-        if (newBusiness) { history.push(`/business/${newBusiness.business.id}`) }
+        console.log(newBusiness)
+        if (newBusiness) { history.push(`/business/${newBusiness.id}`) }
     };
 
     // const handleCancelClick = (e) => {
@@ -106,7 +107,7 @@ const EditBusinessForm = ({ hideForm }) => {
                     value={zipcode}
                     onChange={updateZipcode}
                 />
-                <button type='submit'>Create new Business</button>
+                <button type='submit'>Edit ThisBusiness</button>
             </form>
         </section>
     );

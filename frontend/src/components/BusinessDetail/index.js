@@ -11,17 +11,6 @@ const BusinessDetail = () => {
     const business = useSelector((state) => state.business[businessId]);
     const sessionUser = useSelector(state => state.session.user);
 
-    let reviewLinks;
-    if (sessionUser) {
-        reviewLinks = (
-            <NavLink exact to="/">Check its Reviews!</NavLink>
-        );
-    } else {
-        reviewLinks = (
-            <NavLink to="/login">Check its Reviews!</NavLink>
-        );
-    }
-
     useEffect(() => {
         dispatch(getOneBusiness(businessId));
     }, [dispatch, businessId]);
@@ -39,22 +28,34 @@ const BusinessDetail = () => {
         e.preventDefault();
         history.push(`/edit/business/${businessId}`);
     };
+    const handleClickReview = async (e) => {
+        e.preventDefault();
+        history.push(`/review/business/${businessId}`);
+    };
+
+
+    let reviewLinks;
+    if (sessionUser) {
+        reviewLinks = (
+            <>
+                <button onClick={handleClick}>Delete Business</button>
+                <button onClick={handleClickEdit}>Edit Business</button>
+                <button onClick={handleClickReview}>Read Reviews or Create one!</button>
+            </>
+        );
+    } else {
+        reviewLinks = (
+            <>
+                <NavLink to="/login">Check its Reviews!</NavLink>
+            </>
+        );
+    }
 
     return (
         <div>
             <h1>{business.title}</h1>
             <h2>{business.description}</h2>
             <h2>{business.city}</h2>
-            <button
-                onClick={handleClick}
-            >
-                Delete Business
-            </button>
-            <button
-                onClick={handleClickEdit}
-            >
-                Edit Business
-            </button>
 
             {reviewLinks && reviewLinks}
         </div>

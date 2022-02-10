@@ -53,11 +53,6 @@ const EditBusinessForm = ({ hideForm }) => {
         if (newBusiness) { history.push(`/business/${newBusiness.id}`) }
     };
 
-    // const handleCancelClick = (e) => {
-    //     e.preventDefault();
-    //     hideForm();
-    // };
-
     return (
         <section>
             <ul>

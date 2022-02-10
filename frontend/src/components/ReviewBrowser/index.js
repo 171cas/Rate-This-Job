@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import BusinessDetail from '../BusinessDetail';
 import { getReviews } from '../../store/review';
 
 const ReviewBrowser = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const { businessId } = useParams();
     const reviews = useSelector(state => {
@@ -25,9 +26,10 @@ const ReviewBrowser = () => {
             <BusinessDetail />
             {reviews && reviews?.map((review, i) => {
                 return (
-                    <NavLink key={i} to={`/`}>
+                    <div key={`r${review.id}`}>
                         <div>{review?.context}</div>
-                    </NavLink>
+                        <button onClick={() => { history.push(`/review/${review.id}`) }}>Update/Delete</button>
+                    </div>
                 );
             })}
         </nav>

@@ -11,6 +11,10 @@ const HomePage = () => {
                 <NavLink to="/signup">Sign Up</NavLink>
             </>
         );
+    } else {
+        sessionLinks = (
+            <NavLink to="/createBusiness"><h1>Create a Job</h1></NavLink>
+        )
     }
     // const dispatch = useDispatch();
 
@@ -23,7 +27,6 @@ const HomePage = () => {
         <nav>
             <h1>Review a Job</h1>
             <h1>Read Reviews of a Job</h1>
-            <NavLink to="/createBusiness"><h1>Create a Job</h1></NavLink>
             {sessionLinks && sessionLinks}
         </nav>
     );

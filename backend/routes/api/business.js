@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { Business } = require('../../db/models')
+const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get('/', asyncHandler(async function (_req, res) {
 const validateBusiness = [
     check('title')
         .notEmpty()
-        .isLength({ max: 30 })
+        .isLength({ max: 30, min: 1 })
         .withMessage('Please provide a valid title.'),
     check('description')
         .isLength({ max: 500, min: 10 })
@@ -40,6 +41,7 @@ const validateBusiness = [
         .isInt({ min: 0, max: 99999 })
         .toInt()
         .withMessage('Please provide a valid zipcode.'),
+    handleValidationErrors
 ]
 
 router.post(

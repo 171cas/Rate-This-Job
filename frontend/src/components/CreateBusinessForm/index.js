@@ -13,6 +13,7 @@ const CreateBusinessForm = ({ hideForm }) => {
     const [city, setCity,] = useState('')
     const [state, setState,] = useState('')
     const [zipcode, setZipcode,] = useState(10001)
+    const [errors, setErrors] = useState([]);
 
     const updateTitle = (e) => setTitle(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
@@ -24,6 +25,7 @@ const CreateBusinessForm = ({ hideForm }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors([]);
 
         const payload = {
             title,
@@ -33,12 +35,13 @@ const CreateBusinessForm = ({ hideForm }) => {
             state,
             zipcode
         }
-        let createdBusiness = await dispatch(createBusiness(payload));
-        if (createdBusiness) {
-            //console.log(createdBusiness.business)
-            history.push(`/business/${createdBusiness.business.id}`);
-            //hideForm();
-        }
+        let newBusiness = await dispatch(createBusiness(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+
+        if (newBusiness) { history.push(`/business/${newBusiness.business.id}`) }
     };
 
     // const handleCancelClick = (e) => {
@@ -48,6 +51,9 @@ const CreateBusinessForm = ({ hideForm }) => {
 
     return (
         <section>
+            <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
             <form onSubmit={handleSubmit}>
                 <input
                     type='text'

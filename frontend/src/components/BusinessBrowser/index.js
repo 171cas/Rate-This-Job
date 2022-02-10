@@ -25,12 +25,10 @@ const BusinessBrowser = () => {
             <Route path="/business/:businessId">
                 <BusinessDetail />
             </Route>
-            {businesses.map((business) => {
+            {businesses && businesses?.map((business, i) => {
                 return (
-                    <NavLink key={business.id} to={`/business/${business.id}`}>
-                        <div>
-                            <div>{business.title}</div>
-                        </div>
+                    <NavLink key={i} to={`/business/${business?.id}`}>
+                        <div>{business?.title}</div>
                     </NavLink>
                 );
             })}

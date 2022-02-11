@@ -5,6 +5,7 @@ body{
     color: #191919
 }
 .page-container {
+    margin: 20px;
     min-height: 650px;
     height: 100%;
     background-color: #ececec;

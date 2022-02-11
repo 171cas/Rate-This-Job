@@ -34,6 +34,24 @@ router.get('/:id', asyncHandler(async function (req, res) {
     return res.json(review);
 }));
 
+router.get('/', asyncHandler(async function (req, res) {
+    const review = await Review.findAll({
+        include: [
+            {
+                model: User
+            },
+            {
+                model: Business
+            },
+            {
+                model: Field
+            },
+        ]
+    });
+    //console.log(review)
+    return res.json(review);
+}));
+
 router.delete(
     '/:id',
     restoreUser,

@@ -11,6 +11,7 @@ import CreateBusinessForm from "./components/CreateBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
 import ReviewBrowser from "./components/ReviewBrowser";
 import ReviewDetail from "./components/ReviewDetail"
+import ReviewAllBrowser from "./components/ReviewAllBroser";
 //import BusinessDetail from "./components/BusinessDetail";
 import './index.css'
 
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route exact path={["/review/:reviewId"]}>
             <ReviewDetail />
+          </Route>
+          <Route exact path={["/review"]}>
+            <ReviewAllBrowser />
           </Route>
         </Switch>
       )}

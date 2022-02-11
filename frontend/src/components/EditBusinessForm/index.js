@@ -79,6 +79,13 @@ const EditBusinessForm = ({ hideForm }) => {
                         value={address}
                         onChange={updateAddress}
                     />
+                    <input
+                        type='text'
+                        placeholder='city'
+                        required
+                        value={city}
+                        onChange={updateCity}
+                    />
                     <select
                         value={state}
                         onChange={updateState}
@@ -135,13 +142,6 @@ const EditBusinessForm = ({ hideForm }) => {
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select>
-                    <input
-                        type='text'
-                        placeholder='state'
-                        required
-                        value={state}
-                        onChange={updateState}
-                    />
                     <input
                         type='number'
                         placeholder='zipcode'

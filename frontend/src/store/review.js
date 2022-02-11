@@ -34,6 +34,16 @@ export const getReviews = (businessId) => async (dispatch) => {
     }
 };
 
+export const getAllReviews = () => async (dispatch) => {
+    const response = await fetch(`/api/review/`);
+    //console.log('response', response)
+    if (response.ok) {
+        const list = await response.json();
+        //console.log('list', list)
+        dispatch(load(list));
+    }
+};
+
 export const getOneReview = (id) => async (dispatch) => {
     const response = await fetch(`/api/review/${id}`)
     return response

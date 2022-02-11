@@ -11,7 +11,7 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <li><NavLink exact to="/">Reviews</NavLink></li>
+                <li><NavLink exact to="/review">Reviews</NavLink></li>
                 <li><NavLink to="/business">Businesses</NavLink></li>
                 <ProfileButton user={sessionUser} />
             </>

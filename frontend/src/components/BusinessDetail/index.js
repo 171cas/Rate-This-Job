@@ -47,9 +47,9 @@ const BusinessDetail = () => {
 
     return (
         <div>
-            <h1><NavLink to={`/business/${businessId}`}>{business.title}</NavLink></h1>
-            <h2>{business.description}</h2>
-            <h2>{business.city}</h2>
+            <h2><NavLink to={`/business/${businessId}`}>{business.title}</NavLink></h2>
+            <h3>{business.description}</h3>
+            <h3>{business.city}</h3>
             {reviewLinks && reviewLinks}
         </div>
     );

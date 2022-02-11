@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Route } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import BusinessDetail from '../BusinessDetail';
 import { getReviews } from '../../store/review';
 import CreateReviewForm from '../CreateReviewForm';
@@ -19,7 +19,7 @@ const ReviewBrowser = () => {
 
     useEffect(() => {
         dispatch(getReviews(businessId));
-    }, [dispatch]);
+    }, [dispatch, businessId]);
 
     if (!reviews) {
         return null;

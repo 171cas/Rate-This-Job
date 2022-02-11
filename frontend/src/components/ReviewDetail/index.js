@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getOneReview, deleteReview } from '../../store/review';
 
 const ReviewDetail = () => {
@@ -41,7 +41,7 @@ const ReviewDetail = () => {
 
     return (
         <div>
-            <h1>{review.context}</h1>
+            <h2>{review.context}</h2>
             <h2>Field: {review.fieldId}</h2>
             <h2>Position: {review.position}</h2>
             <h2>Rating: {review.rating}</h2>

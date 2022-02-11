@@ -1,20 +1,22 @@
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 const HomePage = () => {
     const sessionUser = useSelector(state => state.session.user);
+    const history = useHistory();
     let sessionLinks;
     if (!sessionUser) {
         sessionLinks = (
             <>
-                <NavLink to="/login">Log In</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <h2>What can you do?</h2>
+                <h2>Review a job!</h2>
+                <h2>Create a job to be rated & reviewed!</h2>
+                <h2>Write a review and rate a job!</h2>
+                <h2>Read Reviews of a job!</h2>
             </>
         );
     } else {
-        sessionLinks = (
-            <NavLink to="/createBusiness"><h1>Create a Job</h1></NavLink>
-        )
+        history.push("/business");
     }
     // const dispatch = useDispatch();
 
@@ -25,8 +27,6 @@ const HomePage = () => {
 
     return (
         <nav>
-            <h1>Review a Job</h1>
-            <h1>Read Reviews of a Job</h1>
             {sessionLinks && sessionLinks}
         </nav>
     );

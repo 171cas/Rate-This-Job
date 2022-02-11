@@ -11,7 +11,8 @@ import CreateBusinessForm from "./components/CreateBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
 import ReviewBrowser from "./components/ReviewBrowser";
 import ReviewDetail from "./components/ReviewDetail"
-import BusinessDetail from "./components/BusinessDetail";
+//import BusinessDetail from "./components/BusinessDetail";
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="page-container">
+      <h1>Rate This Job!</h1>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -51,7 +53,7 @@ function App() {
           </Route>
         </Switch>
       )}
-    </>
+    </div>
   );
 }
 

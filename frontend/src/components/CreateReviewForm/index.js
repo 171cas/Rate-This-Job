@@ -20,11 +20,6 @@ const CreateReviewForm = ({ hideForm }) => {
     const updateContext = (e) => setContext(e.target.value)
     const updateRating = (e) => setRating(e.target.value)
 
-    const handleCancelClick = (e) => {
-        e.preventDefault();
-        hideForm();
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);

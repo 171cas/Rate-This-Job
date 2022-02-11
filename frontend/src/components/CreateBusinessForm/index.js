@@ -36,10 +36,10 @@ const CreateBusinessForm = ({ hideForm }) => {
             zipcode
         }
         let newBusiness = await dispatch(createBusiness(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
+        // .catch(async (res) => {
+        //     const data = await res.json();
+        //     if (data && data.errors) setErrors(data.errors);
+        // });
 
         if (newBusiness) { history.push(`/business/${newBusiness.business.id}`) }
     };

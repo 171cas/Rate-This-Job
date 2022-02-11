@@ -42,7 +42,10 @@ const CreateReviewForm = ({ hideForm }) => {
                 if (data && data.errors) setErrors(data.errors);
             });
 
-        if (newReview) { history.push(`/review/business/${+businessId}`) }
+        if (newReview) {
+            history.push(`/`)
+            history.push(`/review/business/${+businessId}`)
+        }
     };
 
     return (

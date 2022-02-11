@@ -49,10 +49,10 @@ const ReviewBrowser = () => {
             )}
             {reviews && reviews?.map((review, i) => {
                 return (
-                    <div key={`r${review.id}`}>
+                    <div key={`r${review?.id}`}>
                         <div>{review?.context}</div>
                         {
-                            review.id === sessionUser.id &&
+                            review.userId === sessionUser.id &&
                             <button onClick={() => { history.push(`/review/${review.id}`) }}>Update/Delete</button>
                         }
                     </div>

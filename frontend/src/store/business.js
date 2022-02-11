@@ -121,10 +121,10 @@ const businessReducer = (state = initialState, action) => {
             };
         }
         case ADD_ONE: {
-            if (!state[action.business.id]) {
+            if (!state[action.business?.id]) {
                 const newState = {
                     ...state,
-                    [action.business.id]: action.business
+                    [action.business?.id]: action.business
                 };
                 const businessList = newState.list.map((id) => newState[id]);
                 businessList.push(action.business);

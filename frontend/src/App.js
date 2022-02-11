@@ -11,6 +11,7 @@ import CreateBusinessForm from "./components/CreateBusinessForm";
 import EditBusinessForm from "./components/EditBusinessForm";
 import ReviewBrowser from "./components/ReviewBrowser";
 import ReviewDetail from "./components/ReviewDetail"
+import BusinessDetail from "./components/BusinessDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function App() {
           <Route exact path={["/edit/business/:businessId"]}>
             <EditBusinessForm />
           </Route>
-          <Route exact path={["/review/business/:businessId"]}>
+          <Route exact path="/review/business/:businessId">
             <ReviewBrowser />
           </Route>
           <Route exact path={["/review/:reviewId"]}>

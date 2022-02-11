@@ -22,15 +22,19 @@ const ReviewDetail = () => {
         await dispatch(deleteReview(+reviewId))
         history.push(`/review/business/${review.businessId}`)
     };
-    const handleClickEdit = async (e) => {
+    const handleClickGoBack = async (e) => {
         e.preventDefault();
+        history.goBack()
     };
+    // const handleClickEdit = async (e) => {
+    //     e.preventDefault();
+    // };
     let reviewLinks;
-    if (sessionUser) {
+    if (sessionUser.id === review.userId) {
         reviewLinks = (
             <>
                 <button onClick={handleClickDelete}>Delete Review</button>
-                <button onClick={handleClickEdit}>Edit Review</button>
+                {/* <button onClick={handleClickEdit}>Edit Review</button> */}
             </>
         );
     }
@@ -38,10 +42,15 @@ const ReviewDetail = () => {
     return (
         <div>
             <h1>{review.context}</h1>
-            <h2>{review.position}</h2>
-            <h2>{review.rating}</h2>
+            <h2>Field: {review.fieldId}</h2>
+            <h2>Position: {review.position}</h2>
+            <h2>Rating: {review.rating}</h2>
+            <h2>User: {review.userId}</h2>
+            <h2>Business: {review.businessId}</h2>
 
             {reviewLinks && reviewLinks}
+
+            <button onClick={handleClickGoBack}>Go Back</button>
         </div>
     );
 }

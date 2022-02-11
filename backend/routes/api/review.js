@@ -2,7 +2,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { check } = require('express-validator');
-const { Review } = require('../../db/models')
+const { Review, User, Business, Field } = require('../../db/models')
 const { handleValidationErrors } = require('../../utils/validation');
 //nice job
 const router = express.Router();
@@ -17,7 +17,20 @@ router.get('/business/:businessId', asyncHandler(async function (req, res) {
 }));
 
 router.get('/:id', asyncHandler(async function (req, res) {
-    const review = await Review.findByPk(+req.params.id);
+    const review = await Review.findByPk(+req.params.id, {
+        include: [
+            {
+                model: User
+            },
+            {
+                model: Business
+            },
+            {
+                model: Field
+            },
+        ]
+    });
+    //console.log(review)
     return res.json(review);
 }));
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { editBusiness } from "../../store/business";
 
 const EditBusinessForm = ({ hideForm }) => {
@@ -49,7 +49,6 @@ const EditBusinessForm = ({ hideForm }) => {
                 if (data && data.errors) setErrors(data.errors);
             });
 
-        console.log(newBusiness)
         if (newBusiness) { history.push(`/business/${newBusiness.id}`) }
     };
 

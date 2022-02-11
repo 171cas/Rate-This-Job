@@ -29,7 +29,6 @@ const ReviewBrowser = () => {
         e.preventDefault();
         if (sessionUser) {
             setShowForm(true)
-            console.log(sessionUser)
         } else {
             history.push("/signup");
         }

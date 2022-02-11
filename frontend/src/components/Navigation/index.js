@@ -10,11 +10,16 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <li><NavLink exact to="/">Reviews</NavLink></li>
+                <li><NavLink to="/business">Businesses</NavLink></li>
+                <ProfileButton user={sessionUser} />
+            </>
         );
     } else {
         sessionLinks = (
             <>
+                <li><NavLink exact to="/">Home</NavLink></li>
                 <li><NavLink to="/login">Log In</NavLink></li>
                 <li><NavLink to="/signup">Sign Up</NavLink></li>
             </>
@@ -23,8 +28,6 @@ function Navigation({ isLoaded }) {
 
     return (
         <ul className='horizontal-list'>
-            <li><NavLink exact to="/">Home</NavLink></li>
-            <li><NavLink to="/business">Business</NavLink></li>
             {isLoaded && sessionLinks}
         </ul>
     );

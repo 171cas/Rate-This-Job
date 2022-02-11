@@ -1,12 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
 import BusinessDetail from '../BusinessDetail';
 import { getBusiness } from '../../store/business';
+import CreateBusinessForm from '../CreateBusinessForm';
 
 const BusinessBrowser = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const [showForm, setShowForm] = useState(false);
+    const sessionUser = useSelector(state => state.session.user)
 
     const { businessId } = useParams();
     const businesses = useSelector(state => {
@@ -25,12 +29,31 @@ const BusinessBrowser = () => {
         history.push(`/review/business/${businessId}`);
     };
 
+    const handleClickMB = async (e) => {
+        e.preventDefault();
+        if (sessionUser) {
+            setShowForm(true)
+        } else {
+            history.push("/signup");
+        }
+    };
+
     return (
         <nav>
+            <button onClick={handleClickMB}>Create a Business</button>
             <Route path="/business/:businessId">
                 <BusinessDetail />
-                <button onClick={handleClickReview}>Read Reviews or Create one!</button>
+                <button onClick={handleClickReview}>Read Reviews or create one!</button>
             </Route>
+
+            {showForm ? (
+                <>
+                    <CreateBusinessForm />
+                    <button onClick={() => setShowForm(false)}>Cancel Business</button>
+                </>
+            ) : (
+                <></>
+            )}
             {businesses && businesses?.map((business, i) => {
                 return (
                     <NavLink key={i} to={`/business/${business?.id}`}>

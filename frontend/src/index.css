@@ -86,3 +86,36 @@ button{
 button:hover{
   background-color: #4676b1;
 }
+
+.fcont{
+    background: #748b9c;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 300px;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 10px;
+}
+
+.form-style-3{
+	max-width: 450px;
+    margin: 5px;
+}
+.form-style-3 input,
+.form-style-3 textarea,
+.form-style-3 select{
+	border-radius: 3px;
+	border: 1px solid darkblue;
+	color: black;
+	padding: 5px;
+	background: lightyellow;
+	width:90%;
+}
+
+.form-style-3 textarea{
+    margin-top: 5px;
+}
+.required{
+	color:red;
+	font-weight:normal;
+}

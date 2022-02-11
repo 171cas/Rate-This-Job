@@ -90,6 +90,7 @@ export const createBusiness = (data) => async (dispatch) => {
         dispatch(addOneBusiness(business.id));
         return business;
     }
+    return response
 };
 
 const initialState = {

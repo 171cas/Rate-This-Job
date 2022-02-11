@@ -88,22 +88,24 @@ button:hover{
 }
 
 .fcont{
-    background: #748b9c;
+    background: #497285;
+    color: whitesmoke;
     padding: 10px;
     border-radius: 5px;
     min-width: 300px;
     width: 350px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin: 10px;
+    padding-top: 1px;
 }
 
-.form-style-3{
+.myform{
 	max-width: 450px;
     margin: 5px;
 }
-.form-style-3 input,
-.form-style-3 textarea,
-.form-style-3 select{
+.myform input,
+.myform textarea,
+.myform select{
 	border-radius: 3px;
 	border: 1px solid darkblue;
 	color: black;
@@ -112,7 +114,7 @@ button:hover{
 	width:90%;
 }
 
-.form-style-3 textarea{
+.myform textarea{
     margin-top: 5px;
 }
 .required{

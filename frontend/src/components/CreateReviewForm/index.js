@@ -48,34 +48,36 @@ const CreateReviewForm = ({ hideForm }) => {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <form onSubmit={handleSubmit}>
-                <select value={field} onChange={updateField}>
-                    <option value="1">FOH</option>
-                    <option value="2">BOH</option>
-                    <option value="3">Management / HR</option>
-                </select>
-                <input
-                    type='text'
-                    placeholder='Position'
-                    required
-                    value={position}
-                    onChange={updatePosition}
-                />
-                <input
-                    type='text'
-                    placeholder='Context'
-                    value={context}
-                    onChange={updateContext}
-                />
-                <input
-                    type='text'
-                    placeholder='Rating'
-                    required
-                    value={rating}
-                    onChange={updateRating}
-                />
-                <button type='submit'>Create new Review</button>
-            </form>
+            <div className="fcont">
+                <form className="myform" onSubmit={handleSubmit}>
+                    <select value={field} onChange={updateField}>
+                        <option value="1">FOH</option>
+                        <option value="2">BOH</option>
+                        <option value="3">Management / HR</option>
+                    </select>
+                    <input
+                        type='text'
+                        placeholder='Position'
+                        required
+                        value={position}
+                        onChange={updatePosition}
+                    />
+                    <input
+                        type='text'
+                        placeholder='Context'
+                        value={context}
+                        onChange={updateContext}
+                    />
+                    <input
+                        type='text'
+                        placeholder='Rating'
+                        required
+                        value={rating}
+                        onChange={updateRating}
+                    />
+                    <button type='submit'>Create new Review</button>
+                </form>
+            </div>
         </section>
     );
 };

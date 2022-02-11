@@ -57,52 +57,54 @@ const EditBusinessForm = ({ hideForm }) => {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    placeholder='title'
-                    required
-                    value={title}
-                    onChange={updateTitle}
-                />
-                <input
-                    type='text'
-                    placeholder='description'
-                    value={description}
-                    onChange={updateDescription}
-                />
-                <input
-                    type='text'
-                    placeholder='address'
-                    required
-                    value={address}
-                    onChange={updateAddress}
-                />
-                <input
-                    type='text'
-                    placeholder='city'
-                    required
-                    value={city}
-                    onChange={updateCity}
-                />
-                <input
-                    type='text'
-                    placeholder='state'
-                    required
-                    value={state}
-                    onChange={updateState}
-                />
-                <input
-                    type='number'
-                    placeholder='zipcode'
-                    required
-                    min='0'
-                    max='99999'
-                    value={zipcode}
-                    onChange={updateZipcode}
-                />
-                <button type='submit'>Edit ThisBusiness</button>
-            </form>
+            <div className="fcont">
+                <form className="myform" onSubmit={handleSubmit}>
+                    <input
+                        type='text'
+                        placeholder='title'
+                        required
+                        value={title}
+                        onChange={updateTitle}
+                    />
+                    <input
+                        type='text'
+                        placeholder='description'
+                        value={description}
+                        onChange={updateDescription}
+                    />
+                    <input
+                        type='text'
+                        placeholder='address'
+                        required
+                        value={address}
+                        onChange={updateAddress}
+                    />
+                    <input
+                        type='text'
+                        placeholder='city'
+                        required
+                        value={city}
+                        onChange={updateCity}
+                    />
+                    <input
+                        type='text'
+                        placeholder='state'
+                        required
+                        value={state}
+                        onChange={updateState}
+                    />
+                    <input
+                        type='number'
+                        placeholder='zipcode'
+                        required
+                        min='0'
+                        max='99999'
+                        value={zipcode}
+                        onChange={updateZipcode}
+                    />
+                    <button type='submit'>Edit ThisBusiness</button>
+                </form>
+            </div>
         </section>
     );
 };

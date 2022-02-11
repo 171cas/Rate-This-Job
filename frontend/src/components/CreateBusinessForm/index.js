@@ -58,8 +58,7 @@ const CreateBusinessForm = ({ hideForm }) => {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <div className="fcont">
-
-                <form className="form-style-3" onSubmit={handleSubmit}>
+                <form className="myform" onSubmit={handleSubmit}>
                     <input
                         type='text'
                         placeholder='title'

@@ -34,7 +34,7 @@ const CreateReviewForm = ({ hideForm }) => {
         let newReview = await dispatch(createReview(payload))
             .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                if (data && data?.errors) setErrors(data?.errors);
             });
 
         if (newReview) {
@@ -46,7 +46,7 @@ const CreateReviewForm = ({ hideForm }) => {
     return (
         <section>
             <ul>
-                {errors.map((error, idx) => <li className='required' key={idx}>{error}</li>)}
+                {errors?.map((error, idx) => <li className='required' key={idx}>{error}</li>)}
             </ul>
             <div className="fcont">
                 <form className="myform" onSubmit={handleSubmit}>

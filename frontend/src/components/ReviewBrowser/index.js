@@ -50,7 +50,7 @@ const ReviewBrowser = () => {
                 return (
                     <div key={`r${review?.id}`}>
                         <div>{review?.context}</div>
-                        <button onClick={() => { history.push(`/review/${review.id}`) }}>Info</button>
+                        <button onClick={() => { history.push(`/review/${review?.id}`) }}>Info</button>
                     </div>
                 );
             })}

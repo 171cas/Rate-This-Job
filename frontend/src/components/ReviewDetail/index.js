@@ -20,7 +20,7 @@ const ReviewDetail = () => {
     const handleClickDelete = async (e) => {
         e.preventDefault();
         await dispatch(deleteReview(+reviewId))
-        history.push(`/review/business/${review.businessId}`)
+        history.push(`/review/business/${review?.businessId}`)
     };
     const handleClickGoBack = async (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ const ReviewDetail = () => {
     //     e.preventDefault();
     // };
     let reviewLinks;
-    if (sessionUser.id === review.userId) {
+    if (sessionUser?.id === review?.userId) {
         reviewLinks = (
             <>
                 <button onClick={handleClickDelete}>Delete Review</button>
@@ -42,12 +42,12 @@ const ReviewDetail = () => {
     return (
         <>
             <div className='revcont'>
-                <h2>{review.context}</h2>
-                <h2>Field: {review.Field.name}</h2>
-                <h2>Position: {review.position}</h2>
-                <h2>Rating: {review.rating}</h2>
-                <h2>User: {review.User.username}</h2>
-                <h2>Business: {review.Business.title}</h2>
+                <h2>{review?.context}</h2>
+                <h2>Field: {review?.Field?.name}</h2>
+                <h2>Position: {review?.position}</h2>
+                <h2>Rating: {review?.rating}</h2>
+                <h2>User: {review?.User?.username}</h2>
+                <h2>Business: {review?.Business?.title}</h2>
 
                 {reviewLinks && reviewLinks}
 

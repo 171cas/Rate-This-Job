@@ -10,7 +10,7 @@ const EditBusinessForm = ({ hideForm }) => {
     let { businessId } = useParams();
     businessId = parseInt(businessId)
     const businesses = useSelector(state => Object.values(state.business))
-    const business = businesses.find(business => business.id === businessId);
+    const business = businesses?.find(business => business?.id === businessId);
 
     // const userId = useSelector(state => state.session.user.id);
 
@@ -46,10 +46,10 @@ const EditBusinessForm = ({ hideForm }) => {
         let newBusiness = await dispatch(editBusiness(payload))
             .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                if (data && data?.errors) setErrors(data?.errors);
             });
 
-        if (newBusiness) { history.push(`/business/${newBusiness.id}`) }
+        if (newBusiness) { history.push(`/business/${newBusiness?.id}`) }
     };
 
     return (

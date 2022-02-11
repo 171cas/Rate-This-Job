@@ -38,16 +38,18 @@ const ReviewDetail = () => {
             </>
         );
     }
-
+    let a = "0000000000000000000";
+    console.log(+a)
+    console.log(review)
     return (
         <>
             <div className='revcont'>
                 <h2>{review.context}</h2>
-                <h2>Field: {review.fieldId}</h2>
+                <h2>Field: {review.Field.name}</h2>
                 <h2>Position: {review.position}</h2>
                 <h2>Rating: {review.rating}</h2>
-                <h2>User: {review.userId}</h2>
-                <h2>Business: {review.businessId}</h2>
+                <h2>User: {review.User.username}</h2>
+                <h2>Business: {review.Business.title}</h2>
 
                 {reviewLinks && reviewLinks}
 

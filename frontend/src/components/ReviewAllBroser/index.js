@@ -18,6 +18,9 @@ const ReviewAllBrowser = () => {
     if (!reviews) {
         return null;
     }
+    let a = "0000000000000000000";
+    console.log(+a)
+    console.log(reviews)
 
     return (
         <nav>
@@ -25,8 +28,8 @@ const ReviewAllBrowser = () => {
                 return (
                     <div className='revcont' key={`r${review?.id}`}>
                         <div>{review?.context}</div>
-                        <div>User: {review?.userId}</div>
-                        <div>Business: {review?.businessId}</div>
+                        <div>User: {review?.User.username}</div>
+                        <div>Business: {review?.Business.title}</div>
                         <button onClick={() => { history.push(`/review/${review.id}`) }}>Info</button>
                     </div>
                 );

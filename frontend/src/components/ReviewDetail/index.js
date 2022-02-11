@@ -38,9 +38,7 @@ const ReviewDetail = () => {
             </>
         );
     }
-    let a = "0000000000000000000";
-    console.log(+a)
-    console.log(review)
+
     return (
         <>
             <div className='revcont'>

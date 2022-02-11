@@ -53,11 +53,11 @@ const BusinessDetail = () => {
 
     return (
         <div>
-            <h1>{business.title}</h1>
+            <h1><NavLink to={`/business/${businessId}`}>{business.title}</NavLink></h1>
             <h2>{business.description}</h2>
             <h2>{business.city}</h2>
 
-            {reviewLinks && reviewLinks}
+            {/* {reviewLinks && reviewLinks} */}
         </div>
     );
 

@@ -24,6 +24,7 @@ const BusinessBrowser = () => {
         <nav>
             <Route path="/business/:businessId">
                 <BusinessDetail />
+                <NavLink to={`/review/business/${businessId}`}>Check its Reviews!</NavLink>
             </Route>
             {businesses && businesses?.map((business, i) => {
                 return (

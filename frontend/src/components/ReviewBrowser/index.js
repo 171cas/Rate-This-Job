@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Route } from 'react-router-dom';
 import BusinessDetail from '../BusinessDetail';
 import { getReviews } from '../../store/review';
 import CreateReviewForm from '../CreateReviewForm';
@@ -8,6 +8,7 @@ import CreateReviewForm from '../CreateReviewForm';
 const ReviewBrowser = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user)
 
     const [showForm, setShowForm] = useState(false);
 
@@ -24,12 +25,25 @@ const ReviewBrowser = () => {
         return null;
     }
 
+    const handleClickMR = async (e) => {
+        e.preventDefault();
+        if (sessionUser) {
+            setShowForm(true)
+            console.log(sessionUser)
+        } else {
+            history.push("/signup");
+        }
+    };
+
     return (
         <nav>
             <BusinessDetail />
-            <button onClick={() => setShowForm(true)}>Make a Review</button>
+            <button onClick={handleClickMR}>Make a Review</button>
             {showForm ? (
-                <CreateReviewForm />
+                <>
+                    <CreateReviewForm />
+                    <button onClick={() => setShowForm(false)}>Cancel Review</button>
+                </>
             ) : (
                 <></>
             )}
@@ -37,7 +51,10 @@ const ReviewBrowser = () => {
                 return (
                     <div key={`r${review.id}`}>
                         <div>{review?.context}</div>
-                        <button onClick={() => { history.push(`/review/${review.id}`) }}>Update/Delete</button>
+                        {
+                            review.id === sessionUser.id &&
+                            <button onClick={() => { history.push(`/review/${review.id}`) }}>Update/Delete</button>
+                        }
                     </div>
                 );
             })}

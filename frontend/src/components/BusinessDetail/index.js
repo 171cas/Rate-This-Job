@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom';
-import { getOneBusiness, deleteBusiness } from '../../store/business';
+import { getBusiness, deleteBusiness } from '../../store/business';
 
 
 const BusinessDetail = () => {
     const { businessId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const business = useSelector((state) => state.business[businessId]);
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
-        dispatch(getOneBusiness(businessId));
-    }, [dispatch, businessId]);
+        dispatch(getBusiness());
+    }, [dispatch]);
+
+    const business = useSelector((state) => state.business[businessId]);
 
     if (!business) {
         return null;

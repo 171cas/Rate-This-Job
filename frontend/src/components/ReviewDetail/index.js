@@ -1,18 +1,20 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getOneReview, deleteReview } from '../../store/review';
+import { getAllReviews, deleteReview } from '../../store/review';
 
 const ReviewDetail = () => {
     const { reviewId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const review = useSelector((state) => state.review[reviewId]);
     const sessionUser = useSelector(state => state.session.user);
 
+
     useEffect(() => {
-        dispatch(getOneReview(reviewId));
-    }, [dispatch, reviewId]);
+        dispatch(getAllReviews());
+    }, [dispatch]);
+
+    const review = useSelector((state) => state.review[reviewId]);
 
     if (!review) {
         return null;

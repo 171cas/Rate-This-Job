@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 const LOAD = 'review/LOAD'
 const ADD_ONE = 'review/ADD';
 const DELETE = 'review/DELETE'
-const EDIT = 'review/EDIT';
+//const EDIT = 'review/EDIT';
 
 const load = (list) => (
     {

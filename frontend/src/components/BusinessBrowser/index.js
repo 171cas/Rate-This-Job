@@ -43,7 +43,13 @@ const BusinessBrowser = () => {
             <button onClick={handleClickMB}>Create a Business</button>
             <Route path="/business/:businessId">
                 <BusinessDetail />
-                <button onClick={handleClickReview}>Read Reviews or create one!</button>
+                {businessId &&
+                    <button onClick={handleClickReview}>Read Reviews or create one!</button>
+                }
+
+                {/* <NavLink to={`/review/business/${businessId}`}>
+                    <div>Read Reviews or create one!</div>
+                </NavLink> */}
             </Route>
 
             {showForm ? (

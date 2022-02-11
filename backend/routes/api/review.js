@@ -4,7 +4,7 @@ const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { Review } = require('../../db/models')
 const { handleValidationErrors } = require('../../utils/validation');
-
+//nice job
 const router = express.Router();
 
 async function list(businessId) {

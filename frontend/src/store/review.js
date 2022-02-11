@@ -1,7 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD = 'review/LOAD'
-const ADD = 'review/ADD';
+const ADD_ONE = 'review/ADD';
 const DELETE = 'review/DELETE'
 const EDIT = 'review/EDIT';
 
@@ -17,6 +17,12 @@ const remove = (reviewId) => ({
     reviewId
 })
 
+const addOneReview = (business) => (
+    {
+        type: ADD_ONE,
+        business
+    }
+);
 
 export const getReviews = (businessId) => async (dispatch) => {
     const response = await fetch(`/api/review/business/${businessId}`);
@@ -45,6 +51,23 @@ export const deleteReview = (reviewId) => async (dispatch) => {
         return review;
     }
 }
+
+export const createReview = (data) => async (dispatch) => {
+    //console.log(data);
+    const response = await csrfFetch(`/api/review`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        const review = await response.json();
+        dispatch(addOneReview(review.id));
+        return review;
+    }
+};
 
 const initialState = {
     list: [],

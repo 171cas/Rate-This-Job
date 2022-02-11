@@ -32,4 +32,72 @@ router.delete(
     })
 );
 
+const validateReview = [
+    check('businessId')
+        .notEmpty()
+        .withMessage('Error with Business Authentication'),
+    check('field')
+        .notEmpty()
+        .isInt({ min: 0, max: 3 })
+        .toInt()
+        .withMessage('Please provide a valid field.'),
+    check('position')
+        .notEmpty()
+        .isLength({ max: 30, min: 3 })
+        .withMessage('Please provide a valid position.'),
+    check('context')
+        .notEmpty()
+        .isLength({ max: 1000, min: 10 })
+        .withMessage('Please provide a valid context.'),
+    check('rating')
+        .notEmpty()
+        .isInt({ min: 1, max: 10 })
+        .toInt()
+        .withMessage('Please provide a valid rating (1-10).'),
+    handleValidationErrors
+]
+router.post(
+    '/',
+    restoreUser,
+    validateReview,
+    asyncHandler(async function (req, res) {
+
+        const { user } = req;
+        // const userId = req.session.user.id
+        const {
+            businessId,
+            field,
+            position,
+            context,
+            rating
+        } = req.body;
+
+        const review = await Review.create(
+            {
+                userId: user.id,
+                businessId,
+                fieldId: field,
+                position,
+                context,
+                rating
+            }
+        )
+
+        // console.log(review.dataValues)
+        if (!review) {
+            const err = new Error('Create failed');
+            err.status = 401;
+            err.title = 'Create failed';
+            err.errors = ['The provided credentials were invalid.'];
+            return next(err);
+        }
+
+        return res.json({
+            review
+        });
+
+    })
+);
+
+
 module.exports = router;

@@ -40,18 +40,20 @@ const ReviewDetail = () => {
     }
 
     return (
-        <div>
-            <h2>{review.context}</h2>
-            <h2>Field: {review.fieldId}</h2>
-            <h2>Position: {review.position}</h2>
-            <h2>Rating: {review.rating}</h2>
-            <h2>User: {review.userId}</h2>
-            <h2>Business: {review.businessId}</h2>
+        <>
+            <div className='revcont'>
+                <h2>{review.context}</h2>
+                <h2>Field: {review.fieldId}</h2>
+                <h2>Position: {review.position}</h2>
+                <h2>Rating: {review.rating}</h2>
+                <h2>User: {review.userId}</h2>
+                <h2>Business: {review.businessId}</h2>
 
-            {reviewLinks && reviewLinks}
+                {reviewLinks && reviewLinks}
 
+            </div>
             <button onClick={handleClickGoBack}>Go Back</button>
-        </div>
+        </>
     );
 }
 

@@ -20,6 +20,7 @@ h1 {
 }
 h2{
 	color: #385170;
+    text-align: center;
 }
 
 a:link {
@@ -121,4 +122,39 @@ button:hover{
 .required{
 	color:red;
 	font-weight:normal;
+}
+
+.brcont{
+    border-style: solid;
+	border-radius: 15px;
+    border-color: #142d4c;
+    background-color: #4676b13d;
+    padding: 15px;
+    margin: 15px;
+
+    display: grid;
+    grid-template-areas:
+      'title title'
+      'text imx'
+      'text imx';
+    grid-gap: 10px;
+}
+.item1{ grid-area: title;}
+.item2{ grid-area: text;}
+.item3{ grid-area: imx;}
+.revcont{
+    border-style: solid;
+	border-radius: 15px;
+    border-color: #142d4c;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 15px;
+    margin: 15px;
+}
+
+.imx{
+    background-color: black;
+    background-image: url(https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_1200,h_800,f_auto,fl_lossy,q_80,c_fit/fjeheqltxhlj333m3yjl);
+    background-size: 150px;
+    width: 150px;
+    height: 150px;
 }

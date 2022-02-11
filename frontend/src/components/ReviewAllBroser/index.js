@@ -23,7 +23,7 @@ const ReviewAllBrowser = () => {
         <nav>
             {reviews && reviews?.map((review, i) => {
                 return (
-                    <div key={`r${review?.id}`}>
+                    <div className='revcont' key={`r${review?.id}`}>
                         <div>{review?.context}</div>
                         <div>User: {review?.userId}</div>
                         <div>Business: {review?.businessId}</div>

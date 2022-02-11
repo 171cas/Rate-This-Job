@@ -46,12 +46,21 @@ const BusinessDetail = () => {
     }
 
     return (
-        <div>
-            <h2><NavLink to={`/business/${businessId}`}>{business.title}</NavLink></h2>
-            <h3>{business.description}</h3>
-            <h3>{business.city}, {business.state}.</h3>
+        <>
+            <div className='brcont'>
+                <div className='item1'>
+                    <h2><NavLink to={`/business/${businessId}`}>{business.title}</NavLink></h2>
+                </div>
+                <div className='item2'>
+                    <h3>{business.description}</h3>
+                    <h3>{business.city}, {business.state}.</h3>
+                </div>
+                <div className='item3 imx'>
+
+                </div>
+            </div>
             {reviewLinks && reviewLinks}
-        </div>
+        </>
     );
 
 }

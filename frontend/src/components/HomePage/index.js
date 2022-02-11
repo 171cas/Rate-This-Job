@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const HomePage = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -16,7 +16,7 @@ const HomePage = () => {
             </>
         );
     } else {
-        history.push("/business");
+        return <Redirect to='/business' />
     }
     // const dispatch = useDispatch();
 

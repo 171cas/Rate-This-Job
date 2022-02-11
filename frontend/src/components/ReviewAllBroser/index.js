@@ -18,9 +18,6 @@ const ReviewAllBrowser = () => {
     if (!reviews) {
         return null;
     }
-    let a = "0000000000000000000";
-    console.log(+a)
-    console.log(reviews)
 
     return (
         <nav>

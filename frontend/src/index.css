@@ -2,11 +2,16 @@
 body{
     background-color: #142d4c;
     font-size: 25px;
-    color: #191919
+    color: #191919;
+    align-items: center;
 }
 .page-container {
-    margin: 20px;
+    width: 80%;
+    margin: 0 auto;
+
     min-height: 650px;
+    min-width: 500px;
+    max-width: 800px;
     height: 100%;
     background-color: #ececec;
     border-radius: 25px;
@@ -97,7 +102,7 @@ button:hover{
     min-width: 300px;
     width: 350px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    margin: 10px;
+    margin: 0 auto;
     padding-top: 1px;
 }
 
@@ -152,6 +157,7 @@ button:hover{
 }
 
 .imx{
+	border-radius: 15px;
     background-color: black;
     background-image: url(https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_1200,h_800,f_auto,fl_lossy,q_80,c_fit/fjeheqltxhlj333m3yjl);
     background-size: 150px;

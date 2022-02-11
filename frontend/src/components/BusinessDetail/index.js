@@ -28,25 +28,19 @@ const BusinessDetail = () => {
         e.preventDefault();
         history.push(`/edit/business/${businessId}`);
     };
-    const handleClickReview = async (e) => {
-        e.preventDefault();
-        history.push(`/review/business/${businessId}`);
-    };
 
 
     let reviewLinks;
-    if (sessionUser) {
+    if (sessionUser?.id === business?.userId) {
         reviewLinks = (
             <>
                 <button onClick={handleClick}>Delete Business</button>
                 <button onClick={handleClickEdit}>Edit Business</button>
-                <button onClick={handleClickReview}>Read Reviews or Create one!</button>
             </>
         );
     } else {
         reviewLinks = (
             <>
-                <NavLink to="/login">Check its Reviews!</NavLink>
             </>
         );
     }
@@ -56,8 +50,7 @@ const BusinessDetail = () => {
             <h1><NavLink to={`/business/${businessId}`}>{business.title}</NavLink></h1>
             <h2>{business.description}</h2>
             <h2>{business.city}</h2>
-
-            {/* {reviewLinks && reviewLinks} */}
+            {reviewLinks && reviewLinks}
         </div>
     );
 

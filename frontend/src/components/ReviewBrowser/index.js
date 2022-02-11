@@ -53,7 +53,7 @@ const ReviewBrowser = () => {
                         <div>{review?.context}</div>
                         {
                             review.userId === sessionUser.id &&
-                            <button onClick={() => { history.push(`/review/${review.id}`) }}>Update/Delete</button>
+                            <button onClick={() => { history.push(`/review/${review.id}`) }}>Info</button>
                         }
                     </div>
                 );

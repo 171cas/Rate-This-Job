@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
 import BusinessDetail from '../BusinessDetail';
 import { getBusiness } from '../../store/business';
 
 const BusinessBrowser = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const { businessId } = useParams();
     const businesses = useSelector(state => {
@@ -19,12 +20,16 @@ const BusinessBrowser = () => {
     if (!businesses) {
         return null;
     }
+    const handleClickReview = async (e) => {
+        e.preventDefault();
+        history.push(`/review/business/${businessId}`);
+    };
 
     return (
         <nav>
             <Route path="/business/:businessId">
                 <BusinessDetail />
-                <NavLink to={`/review/business/${businessId}`}>Check its Reviews!</NavLink>
+                <button onClick={handleClickReview}>Read Reviews or Create one!</button>
             </Route>
             {businesses && businesses?.map((business, i) => {
                 return (

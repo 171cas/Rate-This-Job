@@ -15,6 +15,16 @@ function LoginFormPage() {
         <Redirect to="/" />
     );
 
+    const handleClickDemo = async (e) => {
+        e.preventDefault();
+        setErrors([]);
+        return dispatch(sessionActions.login({ credential: "demo@user.io", password: "password" }))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -51,6 +61,7 @@ function LoginFormPage() {
                     />
                 </label>
                 <button type="submit">Log In</button>
+                <button onClick={handleClickDemo}>Demo User</button>
             </form>
         </div>
     );

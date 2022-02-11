@@ -62,7 +62,7 @@ const BusinessBrowser = () => {
             )}
             {businesses && businesses?.map((business, i) => {
                 return (
-                    <NavLink key={i} to={`/business/${business?.id}`}>
+                    <NavLink onClick={() => setShowForm(false)} key={i} to={`/business/${business?.id}`}>
                         <div>{business?.title}</div>
                     </NavLink>
                 );

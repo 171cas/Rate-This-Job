@@ -73,7 +73,7 @@ router.post(
             }
         )
 
-        console.log(business.dataValues)
+        //console.log(business.dataValues)
         if (!business) {
             const err = new Error('Create failed');
             err.status = 401;

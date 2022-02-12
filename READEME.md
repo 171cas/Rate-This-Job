@@ -27,4 +27,4 @@ nom start
 9. Start the services in the frontend directory, which should open the project in your default browser. If not,
 navigate to http://localhost:3000.
 O
-nom start
+npm start

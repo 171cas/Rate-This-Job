@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import { editBusiness } from "../../store/business";
 
-const EditBusinessForm = ({ hideForm }) => {
+const EditBusinessForm = ({ propId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     let { businessId } = useParams();
     businessId = parseInt(businessId)
+    if (propId) businessId = propId;
     const businesses = useSelector(state => Object.values(state.business))
     const business = businesses?.find(business => business?.id === businessId);
 

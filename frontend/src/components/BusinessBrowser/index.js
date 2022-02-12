@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
+import { Switch, Route, useParams, useHistory, Redirect } from 'react-router-dom';
 import BusinessDetail from '../BusinessDetail';
 import { getBusiness } from '../../store/business';
 import CreateBusinessForm from '../CreateBusinessForm';
@@ -41,32 +41,31 @@ const BusinessBrowser = () => {
     return (
         <nav>
             <button onClick={handleClickMB}>Create a Business</button>
-            <Route path="/business/:businessId">
-                <BusinessDetail />
-                {businessId &&
-                    <button onClick={handleClickReview}>Read Reviews or create one!</button>
-                }
-
-                {/* <NavLink to={`/review/business/${businessId}`}>
-                    <div>Read Reviews or create one!</div>
-                </NavLink> */}
-            </Route>
-
             {showForm ? (
                 <>
-                    <CreateBusinessForm />
                     <button onClick={() => setShowForm(false)}>Cancel Business</button>
+                    <CreateBusinessForm />
                 </>
             ) : (
                 <></>
             )}
-            {businesses && businesses?.map((business, i) => {
-                return (
-                    <NavLink onClick={() => setShowForm(false)} key={i} to={`/business/${business?.id}`}>
-                        <div>{business?.title}</div>
-                    </NavLink>
-                );
-            })}
+            <Switch>
+
+                <Route path="/business/:businessId">
+                    <BusinessDetail />
+                </Route>
+                <Route>
+
+                    {businesses && businesses?.map((business, i) => {
+                        return (
+                            <div key={i} >
+                                <BusinessDetail propId={business?.id} />
+                                <button onClick={() => history.push(`review/business/${business?.id}`)}>Read Reviews or create one!</button>
+                            </div>
+                        );
+                    })}
+                </Route>
+            </Switch>
         </nav>
     );
 

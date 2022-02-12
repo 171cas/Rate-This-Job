@@ -12,6 +12,7 @@ import EditBusinessForm from "./components/EditBusinessForm";
 import ReviewBrowser from "./components/ReviewBrowser";
 import ReviewDetail from "./components/ReviewDetail"
 import ReviewAllBrowser from "./components/ReviewAllBroser";
+import NotFound from "./components/NotFound";
 //import BusinessDetail from "./components/BusinessDetail";
 import './index.css'
 
@@ -61,6 +62,7 @@ function App() {
             <Route exact path={["/review"]}>
               <ReviewAllBrowser />
             </Route>
+            <Route path="" component={NotFound} />
           </Switch>
         )}
       </div>

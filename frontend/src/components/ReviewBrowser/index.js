@@ -33,9 +33,14 @@ const ReviewBrowser = () => {
             history.push("/signup");
         }
     };
+    const handleClickGoBack = async (e) => {
+        e.preventDefault();
+        history.goBack()
+    };
 
     return (
         <nav>
+            <button onClick={handleClickGoBack}>Go Back</button>
             <BusinessDetail />
             <button onClick={handleClickMR}>Make a Review</button>
             {showForm ? (

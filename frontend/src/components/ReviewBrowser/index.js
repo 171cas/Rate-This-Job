@@ -35,7 +35,8 @@ const ReviewBrowser = () => {
     };
     const handleClickGoBack = async (e) => {
         e.preventDefault();
-        history.goBack()
+        //history.goBack()
+        history.push("/business")
     };
 
     return (

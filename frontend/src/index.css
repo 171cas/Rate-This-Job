@@ -136,6 +136,7 @@ button:hover{
     background-color: #4676b13d;
     padding: 15px;
     margin: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     display: grid;
     grid-template-areas:
@@ -160,9 +161,11 @@ button:hover{
 }
 
 .imx{
+    border-style: solid;
 	border-radius: 15px;
-    /* background-color: black;
-    background-image: url(https://media.istockphoto.com/vectors/photo-coming-soon-image-icon-vector-illustration-isolated-on-white-vector-id1193046540?k=20&m=1193046540&s=612x612&w=0&h=HQfBJLo1S0CJEsD4uk7m3EkR99gkICDdf0I52uAlk-8=); */
+    border-color: #275997;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	border-radius: 15px;
     background-size: 150px;
     background-repeat: no-repeat;
     background-position:center;

@@ -13,6 +13,7 @@ const CreateBusinessForm = ({ hideForm }) => {
     const [city, setCity,] = useState('')
     const [state, setState,] = useState('CA')
     const [zipcode, setZipcode,] = useState(10001)
+    const [imageUrl, setImageUrl] = useState('https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg')
     const [errors, setErrors] = useState([]);
 
     const updateTitle = (e) => setTitle(e.target.value)
@@ -21,6 +22,7 @@ const CreateBusinessForm = ({ hideForm }) => {
     const updateCity = (e) => setCity(e.target.value)
     const updateState = (e) => setState(e.target.value)
     const updateZipcode = (e) => setZipcode(e.target.value)
+    const updateImageUrl = (e) => setImageUrl(e.target.value)
 
 
     const handleSubmit = async (e) => {
@@ -33,7 +35,8 @@ const CreateBusinessForm = ({ hideForm }) => {
             address,
             city,
             state,
-            zipcode
+            zipcode,
+            imageUrl
         }
         let newBusiness = await dispatch(createBusiness(payload))
             .catch(async (res) => {
@@ -150,6 +153,13 @@ const CreateBusinessForm = ({ hideForm }) => {
                         max='99999'
                         value={zipcode}
                         onChange={updateZipcode}
+                    />
+                    <input
+                        type='text'
+                        placeholder='Image Url'
+                        required
+                        value={imageUrl}
+                        onChange={updateImageUrl}
                     />
                     <button type='submit'>Create new Business</button>
                 </form>

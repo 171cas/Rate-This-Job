@@ -70,7 +70,8 @@ const BusinessDetail = ({ propId }) => {
                     <h3>{business?.description}</h3>
                     <h3>{business?.city}, {business?.state}.</h3>
                 </div>
-                <div className='item3 imx'>
+                <div className='item3 imx'
+                    style={{ backgroundImage: `url('${business?.imageUrl}')` }}>
 
                 </div>
             </div>

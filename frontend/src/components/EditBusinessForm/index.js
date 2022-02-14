@@ -21,6 +21,7 @@ const EditBusinessForm = ({ propId }) => {
     const [city, setCity,] = useState(business?.city)
     const [state, setState,] = useState(business?.state)
     const [zipcode, setZipcode,] = useState(business?.zipcode)
+    const [imageUrl, setImageUrl] = useState(business?.imageUrl)
     const [errors, setErrors] = useState([]);
 
     const updateTitle = (e) => setTitle(e.target.value)
@@ -29,6 +30,7 @@ const EditBusinessForm = ({ propId }) => {
     const updateCity = (e) => setCity(e.target.value)
     const updateState = (e) => setState(e.target.value)
     const updateZipcode = (e) => setZipcode(e.target.value)
+    const updateImageUrl = (e) => setImageUrl(e.target.value)
 
 
     const handleSubmit = async (e) => {
@@ -42,7 +44,8 @@ const EditBusinessForm = ({ propId }) => {
             address,
             city,
             state,
-            zipcode
+            zipcode,
+            imageUrl
         }
         let newBusiness = await dispatch(editBusiness(payload))
             .catch(async (res) => {
@@ -151,6 +154,13 @@ const EditBusinessForm = ({ propId }) => {
                         max='99999'
                         value={zipcode}
                         onChange={updateZipcode}
+                    />
+                    <input
+                        type='text'
+                        placeholder='Image Url'
+                        required
+                        value={imageUrl}
+                        onChange={updateImageUrl}
                     />
                     <button type='submit'>Edit ThisBusiness</button>
                 </form>

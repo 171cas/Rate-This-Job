@@ -42,7 +42,11 @@ module.exports = (sequelize, DataTypes) => {
         len: [5, 5], // something similar that might work?
         min: 0,
         max: 99999
-      }
+      },
+    },
+    imageUrl: {
+      allowNull: false,
+      type: DataTypes.STRING,
     },
   }, {});
   Business.associate = function (models) {

@@ -13,6 +13,7 @@ async function list() {
 // Restore session user
 router.get('/', asyncHandler(async function (_req, res) {
     const businesses = await list();
+    console.log(businesses)
     return res.json(businesses);
 }));
 
@@ -41,6 +42,9 @@ const validateBusiness = [
         .isInt({ min: 0, max: 99999 })
         .toInt()
         .withMessage('Please provide a valid zipcode.'),
+    check('imageUrl')
+        .notEmpty()
+        .withMessage('Please provide a valid Image URL.'),
     handleValidationErrors
 ]
 
@@ -58,7 +62,8 @@ router.post(
             address,
             city,
             state,
-            zipcode
+            zipcode,
+            imageUrl
         } = req.body;
 
         const business = await Business.create(
@@ -69,7 +74,8 @@ router.post(
                 address,
                 city,
                 state,
-                zipcode
+                zipcode,
+                imageUrl
             }
         )
 
@@ -96,6 +102,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
     business.address = req.body.address;
     business.city = req.body.city;
     business.zipcode = req.body.zipcode;
+    business.imageUrl = req.body.imageUrl;
 
     await business.save();
     res.json(business);

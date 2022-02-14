@@ -5,7 +5,7 @@ import { getBusiness, deleteBusiness } from '../../store/business';
 import EditBusinessForm from '../EditBusinessForm';
 
 
-const BusinessDetail = ({ propId }) => {
+const BusinessDetail = ({ propId, rating }) => {
     let { businessId } = useParams();
     if (propId) businessId = propId;
     const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const BusinessDetail = ({ propId }) => {
     const [showForm, setShowForm] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
 
+    //console.log("from detail", rating)
 
     useEffect(() => {
         dispatch(getBusiness());
@@ -69,6 +70,7 @@ const BusinessDetail = ({ propId }) => {
                 <div className='item2'>
                     <h3>{business?.description}</h3>
                     <h3>{business?.city}, {business?.state}.</h3>
+                    <h3>Rating: {rating}</h3>
                 </div>
                 <div className='item3 imx'
                     style={{ backgroundImage: `url('${business?.imageUrl}')` }}>

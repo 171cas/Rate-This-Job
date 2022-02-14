@@ -53,7 +53,7 @@ const EditBusinessForm = ({ propId }) => {
                 if (data && data?.errors) setErrors(data?.errors);
             });
 
-        if (newBusiness) { history.push(`/business/${newBusiness?.id}`) }
+        if (newBusiness) { history.push(`/review/business/${newBusiness?.id}`) }
     };
 
     return (

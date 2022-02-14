@@ -13,7 +13,7 @@ async function list() {
 // Restore session user
 router.get('/', asyncHandler(async function (_req, res) {
     const businesses = await list();
-    console.log(businesses)
+    //console.log(businesses)
     return res.json(businesses);
 }));
 

@@ -37,11 +37,21 @@ const ReviewBrowser = () => {
         e.preventDefault();
         history.goBack()
     };
+    const ratingFunc = () => {
+        let rating = 0
+        let count = 0
+        reviews.forEach(review => {
+            rating += review.rating
+            count++
+
+        });
+        return (count === 0 ? "No reviews yet" : (rating / count).toFixed(2))
+    }
 
     return (
         <nav>
             <button onClick={handleClickGoBack}>Go Back</button>
-            <BusinessDetail />
+            <BusinessDetail rating={ratingFunc()} />
             <button onClick={handleClickMR}>Make a Review</button>
             {showForm ? (
                 <>

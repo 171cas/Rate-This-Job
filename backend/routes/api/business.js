@@ -101,6 +101,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
     business.description = req.body.description;
     business.address = req.body.address;
     business.city = req.body.city;
+    business.state = req.body.state;
     business.zipcode = req.body.zipcode;
     business.imageUrl = req.body.imageUrl;
 
